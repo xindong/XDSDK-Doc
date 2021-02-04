@@ -1,13 +1,13 @@
 module.exports = {
-  title: 'My Site',
+  title: 'XDSDK 文档中心',
   tagline: 'The tagline of my site',
   url: 'https://xindong.github.io',
   baseUrl: '/XDSDK-Doc/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'xindong', // Usually your GitHub org/user name.
+  projectName: 'XDSDK-Doc', // Usually your repo name.
   themeConfig: {
     navbar: {
       title: 'My Site',
