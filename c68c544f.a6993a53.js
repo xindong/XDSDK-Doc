@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[19],{90:function(o){o.exports=JSON.parse('{"allTagsPath":"/XDSDK-Doc/blog/tags","slug":"hello","name":"hello","count":2,"permalink":"/XDSDK-Doc/blog/tags/hello"}')}}]);
