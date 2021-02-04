@@ -3,14 +3,14 @@ module.exports = {
   tagline: 'The tagline of my site',
   url: 'https://xindong.github.io',
   baseUrl: '/XDSDK-Doc/',
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'xindong', // Usually your GitHub org/user name.
   projectName: 'XDSDK-Doc', // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: 'My Site',
+      title: 'XDSDK',
       logo: {
         alt: 'My Site Logo',
         src: 'img/logo.svg',
@@ -85,16 +85,11 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/',
+          routeBasePath: '/',
+          sidebarPath: require.resolve('./sidebars.js')
         },
         blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/blog/',
+          showReadingTime: true
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
