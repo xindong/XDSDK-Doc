@@ -49,7 +49,7 @@ jobs:
       - name: Release to GitHub Pages
         env:
           GIT_USER: jerboy
-          GIT_PASS: ${{secret.GH_GIT_PASS}}  
+          GIT_PASS: ${{secrets.GIT_PASS}}  
         run: |
           git config --global user.email "actions@gihub.com"
           git config --global user.name "gh-actions"
