@@ -2,6 +2,7 @@ module.exports = {
   title: 'XDSDK 文档中心',
   tagline: 'The tagline of my site',
   url: 'https://xindong.github.io',
+  plugins: ['docusaurus-plugin-sass'],
   baseUrl: '/XDSDK-Doc/',
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
@@ -16,17 +17,17 @@ module.exports = {
         src: 'img/logo.svg',
       },
       items: [{
-          to: 'docs/',
-          activeBasePath: 'docs',
-          label: 'XDSDK',
-          position: 'left',
-        },
+        to: 'docs/',
+        activeBasePath: 'docs',
+        label: 'XDSDK',
+        position: 'left',
+      },
 
-        {
-          href: 'https://github.com/xindong/XDSDK-Doc',
-          label: 'GitHub',
-          position: 'right',
-        },
+      {
+        href: 'https://github.com/xindong/XDSDK-Doc',
+        label: 'GitHub',
+        position: 'right',
+      },
       ],
     },
     footer: {}
@@ -43,7 +44,7 @@ module.exports = {
           showReadingTime: true
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve('./src/css/index.scss'),
         },
       },
     ],

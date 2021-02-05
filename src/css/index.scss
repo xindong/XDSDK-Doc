@@ -1,0 +1,40 @@
+@import "variable";
+@import "override";
+@import "font";
+@import "animation";
+
+html {
+  @include tap-font-14;
+  font-family: var(--tap-font-family);
+  color: var(--tap-grey6);
+}
+
+.warning {
+  color: rgb(230, 75, 71);
+  font-weight: bold;
+}
+
+/* 不可选中 */
+.no-select {
+  user-select: none;
+}
+
+/* 不可拖拽 */
+.no-drag {
+  -webkit-user-drag: none;
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: var(--ifm-scrollbar-size);
+  height: var(--ifm-scrollbar-size);
+
+  &-thumb {
+    border-radius: var(--tap-border-radius-base);
+    background: var(--ifm-scrollbar-thumb-background-color);
+  }
+
+  &-track {
+    border-radius: var(--tap-border-radius-base);
+  }
+}
