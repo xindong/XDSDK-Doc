@@ -1,12 +1,7 @@
 version: 2
 
 jobs:
-  build:
-    branches:
-      only:
-        - main
-    context: 
-      - deploy
+  deploy:
     docker:
       - image: node:12.18.0
     steps:
@@ -17,3 +12,16 @@ jobs:
       - run:
           name: deploy
           command: yarn deploy
+
+
+workflows:
+   version: 2
+   build:
+     jobs:
+       - deploy
+         filters:
+           branches:
+             - main
+         context:
+           - deploy
+
