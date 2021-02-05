@@ -7,7 +7,7 @@ module.exports = {
       ]
     },
     {
-      功能介绍: ['unity-fun', 'android-fun', 'ios-fun']
+      功能介绍: ['fun-login', 'fun-usercenter', 'fun-pay','fun-db']
     }
   ],
 };
