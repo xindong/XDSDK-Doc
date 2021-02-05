@@ -13,8 +13,8 @@ module.exports = {
     navbar: {
       title: 'XDSDK',
       logo: {
-        alt: 'My Site Logo',
-        src: 'img/logo.svg',
+        alt: 'XDSDK',
+        src: 'img/logo.png',
       },
       items: [{
         to: 'docs/',
