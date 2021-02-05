@@ -8,6 +8,7 @@ module.exports = {
     },
     {
       功能介绍: ['fun-login', 'fun-usercenter', 'fun-pay','fun-db']
-    }
+    },
+    'xd-faq'
   ],
 };
