@@ -19,4 +19,7 @@ workflows:
     jobs:
       - deploy:
         context: deploy
+        branches:
+          only:
+            - main
        
