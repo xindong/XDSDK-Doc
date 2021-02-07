@@ -11,13 +11,12 @@ module.exports = {
   projectName: 'XDSDK-Doc', // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: 'XDSDK',
       logo: {
         alt: 'XDSDK',
         src: 'img/logo.png',
       },
       items: [{
-        to: 'docs/',
+        to: '/',
         activeBasePath: 'docs',
         label: 'XDSDK',
         position: 'left',
