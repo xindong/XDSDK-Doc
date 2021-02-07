@@ -22,12 +22,12 @@ import {Highlight} from './component';
 ## TapTap登陆功能
 ### 设置回调
 #### API
-```c#
+```cs
 public static void SetCallback(XDCallback callback)
 ```
 
 #### 示例代码
-```c#
+```cs
 //XDSDKCallback需要实现XDCallback接口的所有方法
  XDSDK.SetCallback(new XDSDKCallback());
 ```

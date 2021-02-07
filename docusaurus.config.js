@@ -10,6 +10,10 @@ module.exports = {
   organizationName: 'xindong', // Usually your GitHub org/user name.
   projectName: 'XDSDK-Doc', // Usually your repo name.
   themeConfig: {
+    prism: {
+      theme: require('prism-react-renderer/themes/dracula'),
+      additionalLanguages: ['csharp'],
+    },
     navbar: {
       logo: {
         alt: 'XDSDK',
