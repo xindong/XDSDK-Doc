@@ -7,7 +7,7 @@ sidebar_label: Android
 ## 打包Android
 可以根据需要, 参照如下示例修改Plugins/Android/AndroidManifest.xml，注意要将“项目包名”改为游戏自己的包名。  
 
-```java
+```xml title='AndroidManifest.xml'
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
