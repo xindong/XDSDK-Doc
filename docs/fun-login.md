@@ -7,10 +7,12 @@ import {Highlight} from './component';
 
 ## 1.登录
 
-- XDSDK 2.3.0开始，支持游戏自定义登录入口。入口素材联系平台提供
+- XDSDK 2.3.0开始，支持游戏自定义登录入口。入口素材联系平台提供。<Highlight color='#f00'>原默认登录方式不再推荐</Highlight>
 
-- 游戏自行绘制登录按钮，分别出发下面的登录事件
-```
+- 游戏自行绘制登录按钮，分别触发下面的登录事件
+
+- 登录前需设置回调并完成初始化，回调设置请[参考demo](https://github.com/JemyCheung/xdsdk_unity/blob/master/Assets/scripts/XDSDKCallback.cs)
+```cs
 // 自动登录（若有上次登录记录，则会直接登录）
 public static bool AutoLogin()
 // TapTap登录
@@ -21,11 +23,12 @@ public static void AppleLogin()
 public static void GuestLogin()
 
 ```
-<Highlight color='#f00'>由于苹果审核要求，iOS13 显示第三方登录的同时必须显示苹果登录(建议位置靠前)</Highlight>
 
+*<Highlight color='#f00'>由于苹果审核要求，iOS13+ 显示第三方登录的同时必须显示苹果登录(建议位置靠前) </Highlight>*  
 
-调用该接口会触发下列回调
-<Highlight color='#f00'>获取、查看用户信息以及支付接口请在获取到登录成功回调之后调用。</Highlight>
+*<Highlight color='#f00'>获取、查看用户信息以及支付接口请在获取到登录成功回调之后调用。</Highlight>*
+
+#### 登录状态回调
 
 类别 | 回调方法
 --- | ---
@@ -33,38 +36,39 @@ public static void GuestLogin()
 登录失败 | void OnLoginFailed(string msg)
 登录取消 | void OnLoginCanceled()
 
-<Highlight color='#f00'>XDSDK 4.2.0之后，新版用户中心显示角色信息，需要额外调用接口设置角色信息</Highlight>
-
 
 ## 2.设置角色
-	角色登录成功之后，设置当前角色信息；角色登出后，清空当前角色信息
 
-	```
-	public static void SetRole(string roleId,string roleName,string roleAvatar)
+角色登录成功之后，设置当前角色信息；角色登出后，清空当前角色信息
 
-	public static void ClearRole()
-	```
+**<Highlight color='#f00'>XDSDK 4.2.0之后，新版用户中心显示角色信息，需要额外调用接口设置角色信息</Highlight>**
+
+```cs
+public static void SetRole(string roleId,string roleName,string roleAvatar)
+
+public static void ClearRole()
+```
 
 ## 3.获取Access Token
 
 调用该接口获取当前登录用户的access token。
 
-```
+```cs
 public static string GetAccessToken()
 ```
 
 #### 示例代码
-```
+```cs
 XDSDK.GetAccessToken()
 ```
 
 ## 4.获取当前登录状态
 
-```
+```cs
 public static bool IsLoggedIn()
 ```
 #### 示例代码
-```
+```cs
 XDSDK.IsLoggedIn()
 ```
 
@@ -82,14 +86,14 @@ XDSDK.IsLoggedIn()
 
 调用该方法时，弹出游客绑定窗口。
 
-```
+```cs
 public void OpenUserBindView()
 ```
 
 #### 示例代码
 
-```
-XDSDK.OpenUserBindView ();
+```cs
+XDSDK.OpenUserBindView();
 ```
 
 调用该接口会触发下列回调
@@ -103,7 +107,7 @@ XDSDK.OpenUserBindView ();
 
 需要注销当前登录用户时调用，该操作不会出现登录界面。
 
-```
+```cs
 public static void Logout()
 ```
 调用该接口会触发下列回调
@@ -113,7 +117,7 @@ public static void Logout()
 登出成功 | public void OnLogoutSucceed()
 
 #### 示例代码
-```
+```cs
 XDSDK.Logout();
 ```
 
@@ -121,13 +125,13 @@ XDSDK.Logout();
 
 调用该方法时，弹出确认框供用户选择是否退出。
 
-```
+```cs
 public static void Exit()
 ```
 
 #### 示例代码
 
-```
+```cs
 XDSDK.Exit();
 ```
 

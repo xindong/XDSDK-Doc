@@ -1,12 +1,15 @@
 ---
 id: fun-pay
 title: 支付
-sidebar_label: 支付
+sidebar_label: 支付&广告
 ---
 import {Highlight} from './component';
 
+## 内购
+### 流程图
+![image](https://qnblog.ijemy.com/xd_pay.png)
 
-## 发起支付
+### 发起支付
 
 <Highlight color='#f00'>不保证在任何情况下都能收到回调，请勿直接使用SDK返回的支付结果作为最终判定订单状态的依据。
 为了收到支付回调，需要在应用启动后就设置好支付相关功能。
@@ -14,12 +17,28 @@ import {Highlight} from './component';
 
 调用该接口发起支付。
 
-```
+```cs
 /**
 * @param info 支付相关信息，注意key和value都是字符串类型
 */
 public static bool Pay(Dictionary<string, string> info)
 ```
+
+#### 示例代码
+
+```cs
+Dictionary<string, string> info = new Dictionary<string,string>();
+info.Add("OrderId", "1234567890123456789012345678901234567890");
+info.Add("Product_Price", "1");
+info.Add("EXT", "abcd|efgh|1234|5678");
+info.Add("Sid", "2");
+info.Add("Role_Id", "3");
+info.Add("Product_Id", "4");
+info.Add("Product_Name", "648大礼包");
+info.Add("EXT", "{\"payCallbackCode\":2}");（）
+XDSDK.Pay (info);
+```
+
 其中info的字段如下。
 
 参数 | 必须 |说明
@@ -32,7 +51,7 @@ Role_Id | 是 | 支付角色ID，服务端支付回调会包含该字段
 OrderId | 否 | 游戏侧订单号，服务端支付回调会包含该字段
 EXT | 否 |额外信息，最长512个字符，服务端支付回调会包含该字段。可用于标记区分充值回调地址，如需使用该功能，请联系平台进行配置。#### 示例代码：info.Add("EXT", "{\"payCallbackCode\":2}");
 
-## 恢复支付
+### 恢复支付
 <Highlight color='#f00'>
 恢复支付逻辑，SDK 4.0.1(iOS)之后添加。
 </Highlight>  
@@ -70,7 +89,7 @@ SDK会提供测试包，供游戏使用沙盒测试（购买之后会造成掉�
 
 回调方法
 
-```
+```cs
 /// 有未完成的订单回调，比如：礼包码.注意：多个未完成订单会在一个数组中一起回调。（只会在登录状态下回调）
 /// @param resultList 订单信息List。
 /// 单个未完成订单信息包含：     TransactionIdentifier ：订单标识 ，恢复购买时需要回传
@@ -81,9 +100,9 @@ public override void RestoredPayment(List<Dictionary<string,string>> resultList)
 ```
 
 
-## 恢复订单
+### 恢复订单
 
-```
+```cs
 /**
 * @param info 支付相关信息，注意key和value都是字符串类型
 */
@@ -103,7 +122,7 @@ Role_Id | 是 | 支付角色ID，服务端支付回调会包含该字段
 OrderId | 否 | 游戏侧订单号，服务端支付回调会包含该字段
 EXT | 否 | 额外信息，最长512个字符，服务端支付回调会包含该字段。可用于标记区分充值回调地址，如需使用该功能，请联系平台进行配置。#### 示例代码：[prdInfo setObject:@"{\\"payCallbackCode\\":1}" forKey:@"EXT"];
 
-## 支付结果
+### 支付结果
 
 调用发起支付和恢复支付接口会触发下列回调。
 
@@ -113,17 +132,44 @@ EXT | 否 | 额外信息，最长512个字符，服务端支付回调会包含�
 支付失败 | public void OnPayFailed(string msg)
 支付取消 | public void OnPayCanceled()
 
-#### 6.5示例代码
+
+## 广告
+XDSDK内部集成了部分主要渠道广告SDK，包括今日头条巨量广告平台SDK，和腾讯广点通SDK。必要事件（如注册）会在SDK内部发送，充值事件由XDSDK服务端发送事件到相应平台。游戏不用做额外对接工作。
+
+需要接入相应平台的SDK请联系XDSDK后端配置广告参数。
+
+### iOS
+今日头条：TTTracker.framework，版本2.0.6
+
+广点通：GDTActionSDK.framework，版本1.4.9
+
+游戏打包时加入对应的SDK即可。
+
+注意：
+
+1.广点通SDK在添加到Link Binary With Libraries之后，还必须添加到Embedded Contend中。
+
+2.build setting 中Other Link Flag 中添加-ObjC。
+
+
+### Android
+今日头条：版本2.0.6
+
+广点通：版本1.4.9
+
+需要使用广告包时，将XDAdAction.aar加入工程。并添加新权限
 
 ```
-Dictionary<string, string> info = new Dictionary<string,string>();
-info.Add("OrderId", "1234567890123456789012345678901234567890");
-info.Add("Product_Price", "1");
-info.Add("EXT", "abcd|efgh|1234|5678");
-info.Add("Sid", "2");
-info.Add("Role_Id", "3");
-info.Add("Product_Id", "4");
-info.Add("Product_Name", "648大礼包");
-info.Add("EXT", "{\"payCallbackCode\":2}");（）
-XDSDK.Pay (info);
+<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+```
+
+
+若需要出多个渠道包，由市场联系XDSDK，提供所需文件。
+
+SDK提供接口，获取当前包的渠道名。（单接TapDB时可以使用改接口获取渠道）
+
+```
+//获取当前包的渠道名（安卓）
+public static string GetAdChannelName()
+
 ```
