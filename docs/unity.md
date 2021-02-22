@@ -8,7 +8,7 @@ slug: /
 
 import {Highlight} from './component';
 
-## 快速集成
+## 导包
 
 **集成前可以参考 [官方demo](https://github.com/JemyCheung/xdsdk_unity)**
 
