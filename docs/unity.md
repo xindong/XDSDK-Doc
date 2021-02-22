@@ -10,7 +10,7 @@ import {Highlight} from './component';
 
 ## 导包
 
-**集成前可以参考 [官方demo](https://github.com/JemyCheung/xdsdk_unity)**
+**集成前可以参考 [demo](https://github.com/JemyCheung/xdsdk_unity**
 
 1.  下载XDSDK的 **[Unity3D工具类文件](https://git.gametaptap.com/tds-public/xd-sdk-4/-/tree/master/sdk/unity)**， 双击或拖拽 XDSDK_V(版本号)_unity.unitypackage 文件到 Plugins 目录下导入相关文件。注意，该操作可能会覆盖你项目原来已经存在的文件。 
 2.  全部选择，点击 “import” 按钮。   
@@ -29,7 +29,20 @@ import {Highlight} from './component';
 using xdsdk;
 ```
 
-### 2、XDSDK的初始化
+### 2、设置回调
+
+#### API
+```cs
+public static void SetCallback(XDCallback callback)
+```
+
+#### 示例代码
+```cs
+//XDSDKCallback需要实现XDCallback接口的所有方法
+XDSDK.SetCallback(new XDSDKCallback());
+```
+
+### 3、XDSDK的初始化
 
 #### API
 
@@ -53,19 +66,6 @@ public static void InitSDK(string client_id,
 
 ```cs
 XDSDK.InitSDK("xxxxxx", 1,"xx","xx",true);
-```
-
-### 3、设置回调
-
-#### API
-```cs
-public static void SetCallback(XDCallback callback)
-```
-
-#### 示例代码
-```cs
-//XDSDKCallback需要实现XDCallback接口的所有方法
-XDSDK.SetCallback(new XDSDKCallback());
 ```
 
 
