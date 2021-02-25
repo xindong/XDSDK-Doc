@@ -10,9 +10,9 @@ import {Highlight} from './component';
 
 ## 导包
 
-**集成前可以参考 [demo](https://github.com/JemyCheung/xdsdk_unity**
+**集成中可以参考 [demo](https://github.com/JemyCheung/xdsdk_unity)**
 
-1.  下载XDSDK的 **[Unity3D工具类文件](https://git.gametaptap.com/tds-public/xd-sdk-4/-/tree/master/sdk/unity)**， 双击或拖拽 XDSDK_V(版本号)_unity.unitypackage 文件到 Plugins 目录下导入相关文件。注意，该操作可能会覆盖你项目原来已经存在的文件。 
+1.  下载XDSDK的 **[Unity3D工具类文件](https://git.gametaptap.com/tds-public/xd-sdk-4/-/tree/master/sdk/unity)**， 双击或拖拽 XDSDK_V(版本号)_unity.unitypackage 文件到 Plugins 目录下导入相关文件。注意，该操作可能会覆盖你项目原来已经存在的文件。
 2.  全部选择，点击 “import” 按钮。   
 3.  导入后，将 Plugins/script 下的 XDSDKListener.cs 脚本文件拖动到长生命周期的对象中（比如 MainCamera）进行挂接。  
 
@@ -22,7 +22,7 @@ import {Highlight} from './component';
 
 ## TapTap登陆功能
 
-### 1、首先引入命名空间
+### 1、引入命名空间
 
 #### 示例代码
 ```cs
@@ -42,7 +42,7 @@ public static void SetCallback(XDCallback callback)
 XDSDK.SetCallback(new XDSDKCallback());
 ```
 
-### 3、XDSDK的初始化
+### 3、初始化XDSDK
 
 #### API
 
@@ -55,10 +55,10 @@ XDSDK.SetCallback(new XDSDKCallback());
  * @param enableTapDB 是否开启TapDB
  */
 
-public static void InitSDK(string client_id, 
-						   int aOrientation, 
-						   string channel, 
-						   string version, 
+public static void InitSDK(string client_id,
+						   int aOrientation,
+						   string channel,
+						   string version,
 						   bool enableTapdb)
 ```
 
