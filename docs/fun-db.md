@@ -1,7 +1,7 @@
 ---
 id: fun-db
 title: 数据收集
-sidebar_label: 收据收集
+sidebar_label: 收据收集2.x
 ---
 
 import {Highlight} from './component';
