@@ -222,7 +222,7 @@ XDSDK.SetLoginEntries({"APPLE_LOGIN","WX_LOGIN","TAPTAP_LOGIN","GUEST_LOGIN","QQ
 
 **XDSDK 2.3.0开始，支持游戏自定义登录入口。入口素材由平台提供**
 
-素材地址：[XDSDK登录方式素材](../XDSDK登录方式(大陆)_2020.zip)  
+素材地址：[XDSDK登录方式素材](/res/XDSDK登录方式(大陆)_2020.zip)  
 
 增加自定义登录接口（iOS:AutoLogin/TapTapLogin/AppleLogin/GuestLogin,Android:AutoLogin/TapTapLogin），游戏绘制登录按钮后调用.  
 

@@ -327,7 +327,7 @@ XDSDK.SetLoginEntries({"APPLE_LOGIN","WX_LOGIN","TAPTAP_LOGIN","GUEST_LOGIN","QQ
 
 #### 2.2 自定义登录入口
 
-登录入口 UI 由游戏绘制，不再使用 SDK 页面。绘制登录按钮所需要的 UI 素材由 SDK 提供，素材地址：[XDSDK登录方式素材](./XDSDK登录方式(大陆)_2020.zip)  
+登录入口 UI 由游戏绘制，不再使用 SDK 页面。绘制登录按钮所需要的 UI 素材由 SDK 提供，素材地址：[XDSDK登录方式素材](/res/XDSDK登录方式(大陆)_2020.zip)  
 
 使用该方式登录时, SDK 提供了对应的自定义登录接口（iOS:AutoLogin/TapTapLogin/AppleLogin/GuestLogin,Android:AutoLogin/TapTapLogin），用户在点击游戏绘制的登录入口后，游戏调用对应登录接口即可。  
 
