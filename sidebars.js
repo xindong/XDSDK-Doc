@@ -1,7 +1,8 @@
 module.exports = {
   xdsdk: [{
     接入文档: [
-      'unity',
+      'unity2.x',
+      'unity3.x',
       'android',
       'ios'
       // 'xdsdk-unity',
