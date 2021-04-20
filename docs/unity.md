@@ -30,8 +30,8 @@ import {Highlight,ImageLink} from './component';
 ```json
 //在YourProjectPath/Packages/manifest.json中添加以下代码
 "dependencies":{
-        "com.xd.sdk":"https://github.com/xindong/XDSDK_UPM.git#3.1.0",
-        "com.tds.sdk":"https://github.com/xindong/TAPSDK_UPM.git#1.0.8",
+        "com.xd.sdk":"https://github.com/xindong/XDSDK_UPM.git#3.1.1",
+        "com.tds.sdk":"https://github.com/xindong/TAPSDK_UPM.git#1.0.9",
     }
 ```
 
