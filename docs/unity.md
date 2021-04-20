@@ -30,8 +30,8 @@ import {Highlight,ImageLink} from './component';
 ```json
 //在YourProjectPath/Packages/manifest.json中添加以下代码
 "dependencies":{
-        "com.xd.sdk":"https://github.com/xindong/XDSDK_UPM.git#3.0.0",
-        "com.tds.sdk":"https://github.com/xindong/TAPSDK_UPM.git#1.0.7",
+        "com.xd.sdk":"https://github.com/xindong/XDSDK_UPM.git#3.1.0",
+        "com.tds.sdk":"https://github.com/xindong/TAPSDK_UPM.git#1.0.8",
     }
 ```
 
@@ -1255,7 +1255,7 @@ public static string GetAdChannelName()
 
 ## 动态 SDK 接入
 
-接入动态 SDK 可参考文档 [动态 Unity API](https://git.gametaptap.com/tds/client-sdk/tds-sdk-all/tapsdk-doc/-/blob/old1.1.0/docs/api/unity-tapmoment.md)     
+接入动态 SDK 可参考文档 [动态 Unity API](/tap-fun-moment3.md)     
 > 注意：不需要调用 `TDSMoment.InitSDK` 接口，XDSDK 中已自动处理 
 
 
