@@ -1,7 +1,7 @@
 ---
 id: fun-db
 title: TapDB
-sidebar_label: TapDB 2.x
+sidebar_label: TapDB (XDSDK 中使用)
 ---
 
 import {Highlight} from './component';

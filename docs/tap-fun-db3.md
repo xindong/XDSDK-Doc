@@ -1,7 +1,7 @@
 ---
 id: tap-fun-db
 title: TapDB
-sidebar_label: TapDB 3.x
+sidebar_label: TapDB (单独使用)
 ---
 
 import Tabs from '@theme/Tabs';
