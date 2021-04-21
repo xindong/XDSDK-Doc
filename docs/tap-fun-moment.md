@@ -6,7 +6,7 @@ sidebar_label: 动态 2.x
 
 
 #### 依赖说明
-TapMomentSdk unity 版本依赖于 XDSDK 对应的 unity 版本，所以接入前需先确保已接入最新版 XDSDK。
+TapMomentSdk unity 版本依赖于 XDSDK 对应的 unity 版本，所以接入前需先确保已接入最新版 XDSDK。此版本的SDK需要单独的引入Moment SDK
 ### 接口 API
 
 #### 1. 添加回调
