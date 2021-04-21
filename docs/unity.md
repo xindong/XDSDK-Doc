@@ -37,7 +37,7 @@ import {Highlight,ImageLink} from './component';
 
 #### 1.2 通过 Unity PackageManager 导入
 
-在 Unity 菜单栏中选择 Window -> Package Manager, 选择添加方式为 `Add package from git URL` , 在地址栏中输入 `https://github.com/xindong/TAPSDK_UPM.git#1.0.0` 和 `https://github.com/xindong/XDSDK_UPM.git#3.1.1`即可。
+在 Unity 菜单栏中选择 Window -> Package Manager, 选择添加方式为 `Add package from git URL` , 在地址栏中输入 `https://github.com/xindong/TAPSDK_UPM.git#1.0.9` 和 `https://github.com/xindong/XDSDK_UPM.git#3.1.1`即可。
 
 > 注意：不同 Unity 版本 UI 显示可能略有差别
 	
