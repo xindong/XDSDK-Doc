@@ -158,6 +158,8 @@ import {Highlight,ImageLink} from './component';
     <string>App 需要你的同意，才能访问相机 </string>
     <key>NSMicrophoneUsageDescription</key>
     <string>App 需要你的同意，才能访问麦克风 </string>
+    <key>NSUserTrackingUsageDescription</key>
+<string>请允许xxx获取并使用您的IDFA,来为您提供更好的服务</string>
 </dict>
 </plist>
 ```
