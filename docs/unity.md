@@ -150,7 +150,7 @@ import {Highlight,ImageLink} from './component';
     <key>taptap</key>
     
         <key>client_id</key>
-        <string>ClientId</string>
+        <string>tt[ClientId]</string>
     </dict>
     <key>NSPhotoLibraryUsageDescription</key>
     <string>App 需要你的同意，才能访问相册 </string>
