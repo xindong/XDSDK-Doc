@@ -69,7 +69,7 @@ SDK | UPM 地址
 * Android / iOS 修改单独绑定手机号时接口配置
 
 ##### 文件变更
-新版 XDSDK 使用 UPM 方式接入 ( 具体接入方式参考 [接入文档](./unity_doc.md) )，所以需将之前的 XDSDK 相关文件全部删除，重新使用 Package Manager 接入，具体需要删除的文件请参考 [旧版SDK文件列表](./旧版SDK文件列表.md)
+新版 XDSDK 使用 UPM 方式接入 ( 具体接入方式参考 [接入文档](/unity.md) )，所以需将之前的 XDSDK 相关文件全部删除，重新使用 Package Manager 接入，具体需要删除的文件请参考 [旧版SDK文件列表](/old-list.md)
 
 ## 2.6.0 (iOS 4.5.0 & Android 4.5.0)   
 日期： 05/11
