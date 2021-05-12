@@ -16,6 +16,7 @@ module.exports = {
       // 'fun-usercenter', 'fun-pay', 
       'fun-db', 'tap-fun-db', 'tap-moment', 'tap-fun-moment', 'fun-service']
   },
-    'xd-faq'
+    'xd-faq',
+    'xdsdk-changelog'
   ],
 };
