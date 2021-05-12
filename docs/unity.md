@@ -30,14 +30,14 @@ import {Highlight,ImageLink} from './component';
 ```json
 //在YourProjectPath/Packages/manifest.json中添加以下代码
 "dependencies":{
-        "com.xd.sdk":"https://github.com/xindong/XDSDK_UPM.git#3.1.1",
-        "com.tds.sdk":"https://github.com/xindong/TAPSDK_UPM.git#1.0.9",
+        "com.xd.sdk":"https://github.com/xindong/XDSDK_UPM.git#3.2.0",
+        "com.tds.sdk":"https://github.com/xindong/TAPSDK_UPM.git#1.1.5",
     }
 ```
 
 #### 1.2 通过 Unity PackageManager 导入
 
-在 Unity 菜单栏中选择 Window -> Package Manager, 选择添加方式为 `Add package from git URL` , 在地址栏中输入 `https://github.com/xindong/TAPSDK_UPM.git#1.0.9` 和 `https://github.com/xindong/XDSDK_UPM.git#3.1.1`即可。
+在 Unity 菜单栏中选择 Window -> Package Manager, 选择添加方式为 `Add package from git URL` , 在地址栏中输入 `https://github.com/xindong/TAPSDK_UPM.git#1.1.5` 和 `https://github.com/xindong/XDSDK_UPM.git#3.2.0`即可。
 
 > 注意：不同 Unity 版本 UI 显示可能略有差别
 	
@@ -150,7 +150,7 @@ import {Highlight,ImageLink} from './component';
     <key>taptap</key>
     
         <key>client_id</key>
-        <string>tt[ClientId]</string>
+        <string>ClientId</string>
     </dict>
     <key>NSPhotoLibraryUsageDescription</key>
     <string>App 需要你的同意，才能访问相册 </string>
