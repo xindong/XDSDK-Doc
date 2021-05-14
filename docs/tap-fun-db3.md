@@ -502,20 +502,20 @@ groupId="tap-platform"
   <TabItem value="android">
 
   ```java
-  public static void onEvent(String eventCode, JSONObject properties)
+  public static void track(String eventName, JSONObject properties)
   ```
   </TabItem>
 
   <TabItem value="ios">
 
   ```objectivec
-+ (void)onEvent:(NSString *)eventCode properties:(NSDictionary *)properties;
++ (void)trackEvent:(NSString *)eventName properties:(NSDictionary *)properties;
   ```
   </TabItem>
   <TabItem value="unity">
 
 ```cs
-public static void OnEvent(string eventCode, string properties)
+public static void Track(string eventCode, string properties)
 ```
 
   </TabItem>
