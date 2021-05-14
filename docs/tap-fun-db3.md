@@ -535,7 +535,7 @@ groupId="tap-platform"
   ```java
   try {
       JSONObject object = new JSONObject("{\"param1\":\"param1\",\"param2\":\"param2\"}");
-      TapDB.setLevel(4);TapDB.onEvent("1000",object);
+      TapDB.setLevel(4);TapDB.track("1000",object);
   } catch (JSONException e) {
       e.printStackTrace();
   }
@@ -546,13 +546,13 @@ groupId="tap-platform"
 
   ```objectivec
 NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"name",@"Tap zhang",@"age",@"18",nil];
-[TapDB onEvent:@"userInfo" properties:dict];
+[TapDB trackEvent:@"userInfo" properties:dict];
   ```
   </TabItem>
   <TabItem value="unity">
 
 ```cs
-TapSDK.TDSTapDB.OnEvent("1000","{\"param1\":\"param1\",\"param2\":\"param2\"}");
+TapSDK.TDSTapDB.Track("1000","{\"param1\":\"param1\",\"param2\":\"param2\"}");
 ```
 
   </TabItem>
