@@ -21,7 +21,7 @@ import {Highlight,ImageLink} from './component';
 
 ### 1. 添加 XDSDK 依赖
 
-**已接入旧版 SDK 的游戏需要先删除旧版 SDK 的所有文件，具体文件列表参考 [旧版SDK文件列表](./旧版SDK文件列表.md)**  
+**已接入旧版 SDK 的游戏需要先删除旧版 SDK 的所有文件，具体文件列表参考 [旧版SDK文件列表](./old-list.md)**  
 
  新版 XDSDK 使用 UPM 方式导入 SDK 资源，配置方式有两种，选择一种即可，如下所示：
 
