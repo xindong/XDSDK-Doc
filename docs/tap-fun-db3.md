@@ -488,81 +488,362 @@ payment | 是 | 充值渠道。长度大于0并小于等于256。
 
 ## 7. 自定义事件
 
-推送自定义事件。需要在控制台预先进行配置。
 
-#### API  
+需要发送自定义事件时调用，自定义事件的 eventName 和 properties 属性都必须在元数据管理预先配置，才可以使用SDK进行发送
+
+用户可以通过调用 trackEvent 方法上传需要跟踪的自定义事件。eventName 为自定义事件的事件名，需要保证以 '#' 开头，取值规则请参考自定义属性登记页面。properties 为自定义事件所包含的自定义属性（以 Key : Value 的形式保存），其中 Key 代表了自定义属性的属性名，Value 代表了该属性的值。这里需要注意的是 Key 的命名规则同 eventName 一致，也需要保证以 '#' 开头。目前所支持的 Value 类型为 String, Number, Boolean。String 类型支持最大长度为 256。Number 类型取值区间为 [-9E15, 9E15]。以战斗事件为例：
+
 <Tabs
 groupId="tap-platform"
   defaultValue="Android"
   values={[
+    {label: 'unity', value: 'unity'},
     {label: 'Android', value: 'android'},
     {label: 'iOS', value: 'ios'},
-    {label: 'unity', value: 'unity'},
   ]}>
-  <TabItem value="android">
-
-  ```java
-  public static void track(String eventName, JSONObject properties)
-  ```
-  </TabItem>
-
-  <TabItem value="ios">
-
-  ```objectivec
-+ (void)trackEvent:(NSString *)eventName properties:(NSDictionary *)properties;
-  ```
-  </TabItem>
   <TabItem value="unity">
-
 ```cs
-public static void Track(string eventCode, string properties)
+TapSDK.TDSTapDB.Track("#eventName", "{\"weapon\":\"axe\"}");	
 ```
-
+  </TabItem>
+  <TabItem value="android">
+```java
+JSONObject properties = new JSONObject();
+properties.put("#weapon", "axe");
+properties.put("#level", 10);
+properties.put("#map", "atrium");
+TapDB.track("#battle", properties); 
+```
+  </TabItem>
+  <TabItem value="ios">
+```objectivec
+ NSDictionary* dic = @{@"aaa":@"xxx",@"bbb":@"yyy"};    
+[TapDB trackEvent:@"testEvent2" properties:dic];
+```
   </TabItem>
 </Tabs>
 
-#### 示例代码
+
+## 设置通用事件属性
+
+对于某些重要的属性需要在每个上传的事件中出现，用户可以将这些属性设置为全局通用的自定义属性，包括静态通用属性和动态通用属性，静态通用属性为固定值，动态通用属性每次获取的值由用户所设置的计算逻辑产生。这些通用属性在注册之后，会被附带在TapDB上传的事件中。这里需要注意 trackEvent 中传入的属性优先级 > 动态通用属性优先级 > 静态通用属性优先级，也就是说动态通用属性会覆盖同名的静态通用属性。trackEvent 中的属性会覆盖同名的动态通用属性和静态通用属性。
+
+### 添加静态通用属性
+
+例如，添加来源渠道：
+
 <Tabs
 groupId="tap-platform"
   defaultValue="Android"
   values={[
+    {label: 'unity', value: 'unity'},
     {label: 'Android', value: 'android'},
     {label: 'iOS', value: 'ios'},
-    {label: 'unity', value: 'unity'},
   ]}>
+  <TabItem value="unity">
+```cs
+string properties = "{\"channel\":\"TapDB\"}";
+TapSDK.TDSTapDB.RegisterStaticProperties(properties);
+```
+  </TabItem>
   <TabItem value="android">
 
-  ```java
-  try {
-      JSONObject object = new JSONObject("{\"param1\":\"param1\",\"param2\":\"param2\"}");
-      TapDB.setLevel(4);TapDB.track("1000",object);
-  } catch (JSONException e) {
-      e.printStackTrace();
-  }
-  ```
+```java
+JSONObject commonProperties = new JSONObject();
+        commonProperties.put("channel", "TapDB");
+        TapDB.registerStaticProperties(properties);
+```
   </TabItem>
-
   <TabItem value="ios">
 
-  ```objectivec
-NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"name",@"Tap zhang",@"age",@"18",nil];
-[TapDB trackEvent:@"userInfo" properties:dict];
-  ```
+```objectivec
+[TapDB registerStaticProperties:@{@"channel":@"TapDB"}];
+```
   </TabItem>
+</Tabs>
+
+### 删除静态通用属性
+
+删除单个已添加的事件属性：
+
+<Tabs
+groupId="tap-platform"
+  defaultValue="Android"
+  values={[
+    {label: 'unity', value: 'unity'},
+    {label: 'Android', value: 'android'},
+    {label: 'iOS', value: 'ios'},
+  ]}>
   <TabItem value="unity">
 
 ```cs
-TapSDK.TDSTapDB.Track("1000","{\"param1\":\"param1\",\"param2\":\"param2\"}");
+TapSDK.TDSTapDB.UnregisterStaticProperty("channel");
 ```
+  </TabItem>
+  <TabItem value="android">
+```java
+TapDB.unregisterStaticProperty("channel");
+```
+  </TabItem>
+  <TabItem value="ios">
+```objectivec
+[TapDB unregisterStaticProperty:@"channel"];
+```
+  </TabItem>
+</Tabs>
 
+删除所有事件属性：
+
+<Tabs
+groupId="tap-platform"
+  defaultValue="Android"
+  values={[
+    {label: 'unity', value: 'unity'},
+    {label: 'Android', value: 'android'},
+    {label: 'iOS', value: 'ios'},
+  ]}>
+  <TabItem value="unity">
+```cs
+TapSDK.TDSTapDB.ClearStaticProperties();
+```
+  </TabItem>
+  <TabItem value="android">
+
+```java
+TapDB.clearStaticProperties();
+```
+  </TabItem>
+  <TabItem value="ios">
+
+```objectivec
+[TapDB clearStaticProperties];
+```
+  </TabItem>
+</Tabs>
+
+### 添加动态通用属性
+
+如果需要添加的通用属性的值在不同的上传事件中具有动态的赋值逻辑，那么可以调用 registerDynamicProperties 方法，注册相应的取值逻辑。以用户事件调用当前等级为例：
+
+<Tabs
+groupId="tap-platform"
+  defaultValue="Android"
+  values={[
+    {label: 'unity', value: 'unity'},
+    {label: 'Android', value: 'android'},
+    {label: 'iOS', value: 'ios'},
+  ]}>
+  <TabItem value="unity">
+```cs
+public class TapDBDynamicPropertiesImpl : IDynamicSuperProperties
+{
+        public Dictionary<string, object> GetDynamicProperties()
+        {
+                Dictionary<string, object> dic = new Dictionary<string, object>();
+                dic["#currentLevel"] = level;
+                return dic;
+        }
+}
+TapSDK.TDSTapDB.RegisterDynamicProperties(new TapDBDynamicPropertiesImpl());
+```
+  </TabItem>
+  <TabItem value="android">
+
+```java
+
+TapDB.registerDynamicProperties(
+    () -> {
+              JSONObject properties = new JSONObject();
+            // getCurrentLevel 在这里仅作为案例，表示用户任何的自有逻辑实现
+            long level = getCurrentLevel();
+            properties.put("#currentLevel", level);
+            return properties; 
+    }
+);
+```
+  </TabItem>
+  <TabItem value="ios">
+
+```objectivec
+[TapDB registerDynamicProperties:^NSDictionary *_Nonnull {
+      return @{
+          @"#currentLevel": level
+      };
+  }];
+```
   </TabItem>
 </Tabs>
 
 
-字段 | 可为空 | 说明
-| ------ | ------ | ------ |
-eventCode | 否 | 在控制台中配置得到的事件编码
-properties | 是 | 事件属性。需要和控制台的配置匹配。值需要是长度大于0并小于等于256的字符串或绝对值小于1E11的浮点数
+
+
+## 事件主体操作
+
+TapDB 目前支持两个事件主体：设备，账号。相应支持主体属性的操作为初始化，更新和累加。累加操作只支持数值类型。需要注意的是，传入的自定义属性需要同预登记属性名保持一致。
+
+### 初始化
+
+初始化操作用于初始化属性。
+已初始化的属性，后续的初始化操作会被忽略。
+以上报首次活跃服务器为例：
+
+<Tabs
+groupId="tap-platform"
+  defaultValue="Android"
+  values={[
+    {label: 'unity', value: 'unity'},
+    {label: 'Android', value: 'android'},
+    {label: 'iOS', value: 'ios'},
+  ]}>
+  <TabItem value="unity">
+```cs
+string properties = "{\"firstActiveServer\":\"server1\"}";
+TapSDK.TDSTapDB.DeviceInitialize(properties);
+string properties = "{\"firstActiveServer\":\"server2\"}";
+TapSDK.TDSTapDB.DeviceInitialize(properties);
+```
+  </TabItem>
+  <TabItem value="android">
+```java
+JSONObject properties = new JSONObject();
+        properties.put("firstActiveServer", "server1");
+        TapDB.deviceInitialize(properties);
+        properties.put("firstActiveServer", "server2");
+        TapDB.deviceInitialize(properties);
+```
+  </TabItem>
+  <TabItem value="ios">
+```objectivec
+[TapDB deviceInitialize:@{@"firstActiveServer":@"server1"}];
+[TapDB deviceInitialize:@{@"firstActiveServer":@"server2"}];
+```
+  </TabItem>
+</Tabs>
+
+运行上述代码后，设备表的 `firstActiveServer` 字段值仍为 `server1`。
+
+### 更新
+
+更新操作用于更新属性。
+该操作会覆盖原属性值。
+以上报当前点数为例：
+<Tabs
+groupId="tap-platform"
+  defaultValue="Android"
+  values={[
+    {label: 'unity', value: 'unity'},
+    {label: 'Android', value: 'android'},
+    {label: 'iOS', value: 'ios'},
+  ]}>
+  <TabItem value="unity">
+
+```cs
+string properties = "{\"currentPoints\":10}";
+TapSDK.TDSTapDB.DeviceUpdate(properties);
+
+properties["currentPoints"] = 42;
+TapSDK.TDSTapDB.DeviceUpdate(properties);
+```
+  </TabItem>
+  <TabItem value="android">
+```java
+JSONObject properties = new JSONObject();
+        properties.put("currentPoints", 10);
+        TapDB.deviceUpdate(properties);
+        properties.put("currentPoints", 42);
+        TapDB.deviceUpdate(properties);
+```
+  </TabItem>
+  <TabItem value="ios">
+```objectivec
+[TapDB deviceUpdate:@{@"currentPoints":@10}];
+[TapDB deviceUpdate:@{@"currentPoints":@42}];
+```
+  </TabItem>
+</Tabs>
+
+运行上述代码后，设备表的 `currentPoints` 字段值为 `42`。
+
+### 累加
+
+累加操作用于增减属性，目前只支持数字属性。
+该操作会在原属性值基础上累加数值，原属性不存在时，原属性值计为 0.
+以上报总点数为例：
+
+<Tabs
+groupId="tap-platform"
+  defaultValue="Android"
+  values={[
+    {label: 'unity', value: 'unity'},
+    {label: 'Android', value: 'android'},
+    {label: 'iOS', value: 'ios'},
+  ]}>
+  <TabItem value="unity">
+
+```cs
+string properties = "{\"totalPoints\":10}";
+TapSDK.TDSTapDB.DeviceAdd(properties);
+
+properties["totalPoints"] = -2;
+TapSDK.TDSTapDB.DeviceAdd(properties);
+```
+  </TabItem>
+  <TabItem value="android">
+```java
+JSONObject properties = new JSONObject();
+        properties.put("totalPoints", 10);
+        TapDB.deviceAdd(properties);
+        properties.put("totalPoints", -2);
+        TapDB.deviceAdd(properties);
+```
+  </TabItem>
+  <TabItem value="ios">
+```objectivec
+[TapDB deviceAdd:@{@"totalPoints":@10}];
+[TapDB deviceAdd:@{@"totalPoints":@(-2)}];
+```
+  </TabItem>
+</Tabs>
+
+运行上述代码后，设备表的 `totalPoints` 字段值为 `8`。
+
+上述代码示例中，属性值为整数。
+累加操作也支持浮点数，不过浮点数相加有精度问题，开发者还需留意。
+
+初始化、更新、累加操作同样适用于账号主体：
+
+<Tabs
+groupId="tap-platform"
+  defaultValue="Android"
+  values={[
+    {label: 'unity', value: 'unity'},
+    {label: 'Android', value: 'android'},
+    {label: 'iOS', value: 'ios'},
+  ]}>
+  <TabItem value="unity">
+
+```cs
+TapSDK.TDSTapDB.UserInitialize(properties);
+TapSDK.TDSTapDB.UserUpdate(properties);
+TapSDK.TDSTapDB.UserAdd(properties);
+```
+  </TabItem>
+  <TabItem value="android">
+```java
+TapDB.userInitialize(properties);
+        TapDB.userUpdate(properties);
+        TapDB.userAdd(properties);
+```
+  </TabItem>
+  <TabItem value="ios">
+```objectivec
+[TapDB userInitialize:@{@"firstActiveServer":@"server1"}];
+[TapDB userUpdate:@{@"currentPoints":@10}];
+[TapDB userAdd:@{@"totalPoints":@10}];
+```
+  </TabItem>
+</Tabs>
+
 
 
 ## 8. 服务端在线人数推送
