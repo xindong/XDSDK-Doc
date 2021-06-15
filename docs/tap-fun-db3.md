@@ -502,11 +502,14 @@ groupId="tap-platform"
     {label: 'iOS', value: 'ios'},
   ]}>
   <TabItem value="unity">
+
 ```cs
 TapSDK.TDSTapDB.Track("#eventName", "{\"weapon\":\"axe\"}");	
 ```
+
   </TabItem>
   <TabItem value="android">
+
 ```java
 JSONObject properties = new JSONObject();
 properties.put("#weapon", "axe");
@@ -516,10 +519,12 @@ TapDB.track("#battle", properties);
 ```
   </TabItem>
   <TabItem value="ios">
+
 ```objectivec
  NSDictionary* dic = @{@"aaa":@"xxx",@"bbb":@"yyy"};    
 [TapDB trackEvent:@"testEvent2" properties:dic];
 ```
+
   </TabItem>
 </Tabs>
 
@@ -541,8 +546,9 @@ groupId="tap-platform"
     {label: 'iOS', value: 'ios'},
   ]}>
   <TabItem value="unity">
+
 ```cs
-string properties = "{\"channel\":\"TapDB\"}";
+string properties = "{\"channel\":\"TapDB\"}}";
 TapSDK.TDSTapDB.RegisterStaticProperties(properties);
 ```
   </TabItem>
@@ -634,6 +640,7 @@ groupId="tap-platform"
     {label: 'iOS', value: 'ios'},
   ]}>
   <TabItem value="unity">
+
 ```cs
 public class TapDBDynamicPropertiesImpl : IDynamicSuperProperties
 {
@@ -646,6 +653,7 @@ public class TapDBDynamicPropertiesImpl : IDynamicSuperProperties
 }
 TapSDK.TDSTapDB.RegisterDynamicProperties(new TapDBDynamicPropertiesImpl());
 ```
+
   </TabItem>
   <TabItem value="android">
 
@@ -661,6 +669,7 @@ TapDB.registerDynamicProperties(
     }
 );
 ```
+
   </TabItem>
   <TabItem value="ios">
 
@@ -696,6 +705,7 @@ groupId="tap-platform"
     {label: 'iOS', value: 'ios'},
   ]}>
   <TabItem value="unity">
+
 ```cs
 string properties = "{\"firstActiveServer\":\"server1\"}";
 TapSDK.TDSTapDB.DeviceInitialize(properties);
@@ -704,6 +714,7 @@ TapSDK.TDSTapDB.DeviceInitialize(properties);
 ```
   </TabItem>
   <TabItem value="android">
+
 ```java
 JSONObject properties = new JSONObject();
         properties.put("firstActiveServer", "server1");
@@ -711,12 +722,15 @@ JSONObject properties = new JSONObject();
         properties.put("firstActiveServer", "server2");
         TapDB.deviceInitialize(properties);
 ```
+
   </TabItem>
   <TabItem value="ios">
+
 ```objectivec
 [TapDB deviceInitialize:@{@"firstActiveServer":@"server1"}];
 [TapDB deviceInitialize:@{@"firstActiveServer":@"server2"}];
 ```
+
   </TabItem>
 </Tabs>
 
@@ -746,6 +760,7 @@ TapSDK.TDSTapDB.DeviceUpdate(properties);
 ```
   </TabItem>
   <TabItem value="android">
+
 ```java
 JSONObject properties = new JSONObject();
         properties.put("currentPoints", 10);
@@ -755,6 +770,7 @@ JSONObject properties = new JSONObject();
 ```
   </TabItem>
   <TabItem value="ios">
+
 ```objectivec
 [TapDB deviceUpdate:@{@"currentPoints":@10}];
 [TapDB deviceUpdate:@{@"currentPoints":@42}];
@@ -789,6 +805,7 @@ TapSDK.TDSTapDB.DeviceAdd(properties);
 ```
   </TabItem>
   <TabItem value="android">
+
 ```java
 JSONObject properties = new JSONObject();
         properties.put("totalPoints", 10);
@@ -798,6 +815,7 @@ JSONObject properties = new JSONObject();
 ```
   </TabItem>
   <TabItem value="ios">
+
 ```objectivec
 [TapDB deviceAdd:@{@"totalPoints":@10}];
 [TapDB deviceAdd:@{@"totalPoints":@(-2)}];
@@ -829,6 +847,7 @@ TapSDK.TDSTapDB.UserAdd(properties);
 ```
   </TabItem>
   <TabItem value="android">
+
 ```java
 TapDB.userInitialize(properties);
         TapDB.userUpdate(properties);
@@ -836,11 +855,13 @@ TapDB.userInitialize(properties);
 ```
   </TabItem>
   <TabItem value="ios">
+
 ```objectivec
 [TapDB userInitialize:@{@"firstActiveServer":@"server1"}];
 [TapDB userUpdate:@{@"currentPoints":@10}];
 [TapDB userAdd:@{@"totalPoints":@10}];
 ```
+
   </TabItem>
 </Tabs>
 
