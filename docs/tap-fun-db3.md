@@ -609,9 +609,11 @@ groupId="tap-platform"
     {label: 'iOS', value: 'ios'},
   ]}>
   <TabItem value="unity">
+
 ```cs
 TapSDK.TDSTapDB.ClearStaticProperties();
 ```
+
   </TabItem>
   <TabItem value="android">
 
