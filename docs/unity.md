@@ -116,19 +116,19 @@ import {Highlight,ImageLink} from './component';
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-
+<dict>
     <key>wechat</key>
-    
+    <dict>
         <key>client_id</key>
         <string>wxbdfbe5dbd3e3c64b</string>
     </dict>
     <key>tencent</key>
-    
+    <dict>
         <key>client_id</key>
         <string>tencent1106148555</string>
     </dict>
     <key>XD</key>
-    
+    <dict>
         <key>client_id</key>
         <string>XD-d4bjgwom9zk84wk</string>
     </dict>
@@ -146,9 +146,9 @@ import {Highlight,ImageLink} from './component';
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-
+<dict>
     <key>taptap</key>
-    
+    <dict>
         <key>client_id</key>
         <string>ClientId</string>
     </dict>
