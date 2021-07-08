@@ -757,7 +757,7 @@ groupId="tap-platform"
 string properties = "{\"currentPoints\":10}";
 TapSDK.TDSTapDB.DeviceUpdate(properties);
 
-properties["currentPoints"] = 42;
+properties = "{\"currentPoints\":42}";
 TapSDK.TDSTapDB.DeviceUpdate(properties);
 ```
   </TabItem>
@@ -802,7 +802,7 @@ groupId="tap-platform"
 string properties = "{\"totalPoints\":10}";
 TapSDK.TDSTapDB.DeviceAdd(properties);
 
-properties["totalPoints"] = -2;
+properties = "{\"totalPoints\":-2}";
 TapSDK.TDSTapDB.DeviceAdd(properties);
 ```
   </TabItem>
