@@ -621,6 +621,7 @@ method：GET
 {"id":"1",
 "id_card":"1111",
 "name":"xdname",
+"adult_type":0,
 "friendly_name":"xdfriendly_name",
 "client_id":"abc",
 "phone":"1",
@@ -629,11 +630,12 @@ method：GET
 id：用户的ID，注意类型是字符串
 id_card：加密的身份证号，可能为空
 name：用户的账号名称
+adult_type: 0.未实名 1. 0-8岁 2. 8-16岁 3. 16-18岁 4. 18+岁
 friendly_name：用户的昵称，如果游戏想要展现用户名称，建议使用该字段
 client_id：该用户在该游戏登录时使用的心动AppID
 phone： 绑定的手机号码
 safety： 账号是否安全/通过设备二次验证（true：安全，false：不安全）
-site：账号类型, 0 => vc账号，1 => 心动账号，3 => qq账号，8 => 微信账号，9 => TapTap账号，注意类型是字符串
+site：账号类型, 0 => vc账号，1 => 心动账号，3 => qq账号，8 => 微信账号，9 => TapTap账号，10 => 苹果账号，注意类型是字符串
 fcm：0/1（0：无需防沉迷，1：需要防沉迷）
 authoriz_state：0/1/2/3/4（实名状态,0未实名，>0 都表示已实名认证）
 ``` 
