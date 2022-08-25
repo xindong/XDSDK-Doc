@@ -6,6 +6,10 @@ slug: /
 ---
 基于XDSDK实现简单的登录功能
 
+:::tip
+XDSDK 6.x 文档地址在 [docs.xdglobalapi.com](https://docs.xdglobalapi.com)，使用 6.x 版本的开发者请忽略这里的文档。
+:::
+
 import {Highlight,ImageLink} from './component';
 
 ## Unity 环境设置及 SDK 资源配置
